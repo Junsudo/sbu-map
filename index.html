@@ -275,11 +275,16 @@ text{font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Segoe U
   </section>
 
   <section id="admin">
-    <h2>행정 · 서류 <small>도착 첫 달에 갈 곳</small></h2>
+    <h2>행정 · 생활 서비스 <small>도착 첫 달에 갈 곳, 전부 지도에 있음</small></h2>
     <ul>
       <li><b>DMV</b>(면허·신분증): 가까운 곳은 <b>Port Jefferson Station</b>(1055 Route 112, 금요일 휴무), 큰 사무소는 <b>Hauppauge</b>(250 Veterans Memorial Hwy)입니다. 온라인 예약 후 방문하세요.</li>
-      <li>병원은 캠퍼스 안 <b>Stony Brook University Hospital</b>이 대형 병원이라 응급 상황 기준점이 됩니다. 가벼운 진료는 학교 Student Health부터.</li>
-      <li>은행·통신·우체국은 25A와 Route 347에 다 있어서 따로 지도에 찍지 않았습니다.</li>
+      <li><b>은행</b>: 계좌 개설 같은 창구 업무는 지점 방문이 필요합니다. 가까운 곳은 <b>Chase</b>(1395 Route 25A)와 <b>Bank of America</b>(15 Bennetts Rd)입니다.</li>
+      <li><b>약국</b>: 기본은 <b>CVS</b>(682 Route 25A, 22시까지)이고 <b>Walgreens</b>(226 Route 25A)도 있습니다. 한밤중엔 Port Jefferson Station의 <b>24시간 CVS</b>(4331 Nesconset Hwy)로 갑니다.</li>
+      <li><b>우체국</b>: <b>USPS East Setauket</b>(450 Route 25A, 평일 9-5·토 9-15:30). 한국행 소포도 여기서 보냅니다.</li>
+      <li><b>세탁</b>: 기숙사는 동마다 세탁실이 있고, 이불 같은 큰 빨래는 <b>Stony Brook Laundromat</b>(2460 Nesconset Hwy, wash &amp; fold 가능)이 가깝습니다.</li>
+      <li><b>이발</b>: 캠퍼스 앞 스트립의 <b>Rockabilly Barbers</b>(1099D Route 25A, 월·일 휴무)가 walk-in으로 가장 간단합니다. 한국식 미용실은 Flushing 원정이 현실적입니다.</li>
+      <li><b>아플 때</b>: 가벼운 진료는 캠퍼스 Student Health, 야간·주말은 urgent care(<b>CityMD</b> Lake Grove·Port Jefferson Station), 응급은 캠퍼스 옆 <b>Stony Brook University Hospital</b> ER 순서입니다.</li>
+      <li><b>통신</b>: T-Mobile·Verizon·AT&amp;T 매장은 Route 347 곳곳에 있습니다. 도착 직후 쓸 eSIM을 한국에서 미리 준비해 오면 편합니다.</li>
     </ul>
   </section>
 
@@ -360,10 +365,10 @@ const POIS=[
 {id:"hmartj",nm:"H Mart Jericho",cat:"kr",t:2,la:40.7930,lo:-73.5390,addr:"336 N Broadway, Jericho",d:"서쪽으로 나갈 일이 있을 때 겸사겸사 들르는 지점입니다. IKEA와 같은 방향입니다.",car:"40분",lx:6,ly:16},
 {id:"ftlee",nm:"Fort Lee · Pal Park",cat:"kr",t:3,la:40.8495,lo:-73.9850,d:"NJ의 대형 한인타운. 규모는 크지만 SBU에서 2시간대라 참고용입니다.",car:"2시간±",lx:-10,ly:-8},
 {id:"mall",nm:"Smith Haven Mall",cat:"shop",t:1,la:40.8683,lo:-73.1310,d:"근처 유일한 대형 몰(Macy's 등). 캠퍼스에서 51번 버스가 직행하고, 주말엔 SBU ID 무료 프로그램 대상 구간입니다.",car:"10-15분",tr:"51번 버스 약 30분",lx:-6,ly:-10},
-{id:"wegmans",nm:"Wegmans Lake Grove",cat:"shop",t:2,la:40.8625,lo:-73.1160,addr:"3270 Middle Country Rd, Lake Grove",d:"품질 좋기로 유명한 대형 슈퍼가 근처에 생겨서 장보기 선택지가 넓습니다.",car:"12분",lx:10,ly:12},
+{id:"wegmans",nm:"Wegmans Lake Grove",cat:"shop",t:2,la:40.8625,lo:-73.1160,addr:"3270 Middle Country Rd, Lake Grove",d:"품질 좋기로 유명한 대형 슈퍼가 근처에 생겨서 장보기 선택지가 넓습니다.",car:"12분",lx:10,ly:-2},
 {id:"tj",nm:"Trader Joe's",cat:"shop",t:2,la:40.8608,lo:-73.1285,d:"Lake Grove점. 몰 바로 남쪽이라 몰 가는 날 같이 들르면 됩니다.",car:"12분",lx:-4,ly:18},
-{id:"target",nm:"Target (S Setauket)",cat:"shop",t:2,la:40.9050,lo:-73.0880,d:"Route 347에 있는 생활용품 기본값. 입주 초기 살림 장만은 대개 여기서 시작합니다.",car:"8분",lx:8,ly:12},
-{id:"stopshop",nm:"Stop & Shop (25A)",cat:"shop",t:2,la:40.9415,lo:-73.1040,d:"캠퍼스에서 가장 가까운 일반 슈퍼. 25A를 따라 East Setauket 방향입니다.",car:"7분",lx:-6,ly:-8},
+{id:"target",nm:"Target (S Setauket)",cat:"shop",t:2,la:40.9050,lo:-73.0880,d:"Route 347에 있는 생활용품 기본값. 입주 초기 살림 장만은 대개 여기서 시작합니다.",car:"8분",lx:10,ly:-2},
+{id:"stopshop",nm:"Stop & Shop (25A)",cat:"shop",t:2,la:40.9415,lo:-73.1040,d:"캠퍼스에서 가장 가까운 일반 슈퍼. 25A를 따라 East Setauket 방향입니다.",car:"7분",lx:-8,ly:-4},
 {id:"costco",nm:"Costco Holbrook",cat:"shop",t:2,la:40.7850,lo:-73.0750,addr:"125 Beacon Dr, Holbrook",d:"창고형 대량 구매는 여기입니다.",car:"25분",lx:8,ly:14},
 {id:"tanger",nm:"Tanger Outlets Riverhead",cat:"shop",t:3,la:40.9160,lo:-72.6850,d:"동쪽 끝의 아울렛. North Fork 나들이와 묶으면 하루 코스가 됩니다.",car:"35-40분",lx:-10,ly:-8},
 {id:"dmvpj",nm:"DMV Port Jeff Station",cat:"life",t:2,la:40.9140,lo:-73.0470,addr:"1055 Route 112, Port Jefferson Station",hrs:"금 휴무",d:"면허·신분증 업무의 가까운 선택지. 온라인 예약 후 방문하세요.",car:"12분",lx:8,ly:12},
@@ -384,14 +389,24 @@ const POIS=[
 {id:"gcactus",nm:"Green Cactus Grill",cat:"eat",t:2,la:40.9212,lo:-73.1316,addr:"1099 N Country Rd(25A), Stony Brook",d:"부리토와 타코 그릴. 캠퍼스 앞 스트립의 든든한 한 끼입니다.",car:"5분",lx:-8,ly:22},
 {id:"crazybeans",nm:"Crazy Beans",cat:"eat",t:2,la:40.9170,lo:-73.1458,addr:"Stony Brook Village Center",d:"브런치와 커피. 주말 아침 동네 마실 코스입니다.",car:"6분",lx:-8,ly:-10},
 {id:"sweetmamas",nm:"Sweet Mama's",cat:"eat",t:3,la:40.9159,lo:-73.1468,addr:"Stony Brook Village Center",d:"올데이 브런치 다이너. 버거와 샌드위치가 무난합니다.",car:"6분",lx:-8,ly:16},
-{id:"luca",nm:"Luca",cat:"eat",t:3,la:40.9150,lo:-73.1448,addr:"Stony Brook Village Center",d:"동네에서 제일 차려입고 가는 이탈리안. 부모님 오시면 여기입니다.",car:"6분",lx:8,ly:14},
-{id:"slurp",nm:"Slurp Ramen",cat:"eat",t:2,la:40.9458,lo:-73.0712,addr:"109 W Broadway, Port Jefferson",hrs:"월 휴무",d:"Port Jefferson의 라멘집. 항구 산책과 묶기 좋습니다.",car:"10분",lx:-8,ly:14},
-{id:"toast",nm:"Toast Coffeehouse",cat:"eat",t:2,la:40.9450,lo:-73.0655,addr:"Port Jefferson",d:"브런치 명소. 주말엔 웨이팅이 있는 편입니다.",car:"10분",lx:8,ly:14},
-{id:"ff347",nm:"347 패스트푸드 지대",cat:"eat",t:2,la:40.9010,lo:-73.0930,d:"Smith Haven Mall에서 Target 사이 347 변에 McDonald's, Wendy's, Taco Bell, Dunkin 같은 체인이 이어집니다. 급한 끼니는 이 구간에서 해결됩니다.",car:"8-12분",lx:8,ly:16},
-{id:"amc",nm:"AMC Stony Brook 17",cat:"fun",t:2,la:40.8995,lo:-73.0985,addr:"2196 Nesconset Hwy, Stony Brook",d:"근처 유일한 대형 영화관. 347 변이라 장보기와 묶기 좋습니다.",car:"8분",lx:-8,ly:-8},
+{id:"luca",nm:"Luca",cat:"eat",t:3,la:40.9150,lo:-73.1448,addr:"Stony Brook Village Center",d:"동네에서 제일 차려입고 가는 이탈리안. 부모님 오시면 여기입니다.",car:"6분",lx:8,ly:20},
+{id:"slurp",nm:"Slurp Ramen",cat:"eat",t:2,la:40.9458,lo:-73.0712,addr:"109 W Broadway, Port Jefferson",hrs:"월 휴무",d:"Port Jefferson의 라멘집. 항구 산책과 묶기 좋습니다.",car:"10분",lx:-12,ly:26},
+{id:"toast",nm:"Toast Coffeehouse",cat:"eat",t:2,la:40.9450,lo:-73.0655,addr:"Port Jefferson",d:"브런치 명소. 주말엔 웨이팅이 있는 편입니다.",car:"10분",lx:14,ly:16},
+{id:"ff347",nm:"347 패스트푸드 지대",cat:"eat",t:2,la:40.9010,lo:-73.0930,d:"Smith Haven Mall에서 Target 사이 347 변에 McDonald's, Wendy's, Taco Bell, Dunkin 같은 체인이 이어집니다. 급한 끼니는 이 구간에서 해결됩니다.",car:"8-12분",lx:10,ly:18},
+{id:"amc",nm:"AMC Stony Brook 17",cat:"fun",t:2,la:40.8995,lo:-73.0985,addr:"2196 Nesconset Hwy, Stony Brook",d:"근처 유일한 대형 영화관. 347 변이라 장보기와 묶기 좋습니다.",car:"8분",lx:-10,ly:-4},
 {id:"ikea",nm:"IKEA Hicksville",cat:"shop",t:2,la:40.7745,lo:-73.5245,addr:"Broadway Commons, 358 N Broadway, Hicksville",d:"가구와 살림 장만의 성지. 입주 직후 한 번은 가게 됩니다. Hicksville역에서 가깝습니다.",car:"45-50분",lx:8,ly:-6},
 {id:"freeport",nm:"Freeport LIRR",cat:"rail",t:3,la:40.6571,lo:-73.5822,d:"Babylon Branch의 역. 여름철 Jones Beach행 NICE n88 버스가 여기서 출발합니다.",lx:6,ly:14},
 {id:"babylon",nm:"Babylon LIRR",cat:"rail",t:3,la:40.7000,lo:-73.3230,d:"Babylon Branch 종점이자 Montauk 방면 환승역. Hamptons 갈 때 거치게 됩니다.",lx:6,ly:14},
+{id:"chase",nm:"Chase Bank",cat:"life",t:2,la:40.9330,lo:-73.1140,addr:"1395 Route 25A, Setauket",hrs:"평일 9-5, 토 9-2",d:"캠퍼스에서 가장 가까운 대형 은행 지점. 계좌 개설 같은 창구 업무는 여기서 봅니다.",car:"5분",lx:8,ly:14},
+{id:"boa",nm:"Bank of America",cat:"life",t:3,la:40.9390,lo:-73.1110,addr:"15 Bennetts Rd, East Setauket",d:"BoA 지점과 walk-up ATM. Chase와 취향대로 고르면 됩니다.",car:"6분",lx:8,ly:16},
+{id:"cvs",nm:"CVS (Setauket)",cat:"life",t:2,la:40.9428,lo:-73.0990,addr:"682 Route 25A, Setauket",hrs:"매일 8-22",d:"기본 약국이자 편의점. 처방약 픽업과 자잘한 생필품은 여기서 해결됩니다.",car:"6분",lx:-6,ly:-18},
+{id:"walgreens",nm:"Walgreens",cat:"life",t:3,la:40.9445,lo:-73.0880,addr:"226 Route 25A, East Setauket",d:"CVS의 대안 약국. 같은 25A 선상에 있습니다.",car:"7분",lx:12,ly:-6},
+{id:"cvs24",nm:"CVS 24시간",cat:"life",t:3,la:40.9250,lo:-73.0520,addr:"4331 Nesconset Hwy, Port Jefferson Station",hrs:"24시간",d:"밤중에 약이 필요할 때 가는 24시간 지점입니다.",car:"10분",lx:8,ly:14},
+{id:"usps",nm:"USPS East Setauket",cat:"life",t:2,la:40.9440,lo:-73.0930,addr:"450 Route 25A, East Setauket",hrs:"평일 9-5, 토 9-15:30",d:"가까운 우체국. 한국으로 소포 보낼 때 여기입니다.",car:"6분",lx:12,ly:4},
+{id:"laundromat",nm:"Stony Brook Laundromat",cat:"life",t:3,la:40.9020,lo:-73.0915,addr:"2460 Nesconset Hwy, Stony Brook",hrs:"매일 8:30-20",d:"코인 세탁 및 wash &amp; fold 맡기기 가능. 기숙사 세탁실이 붐빌 때의 대안입니다.",car:"8분",lx:-10,ly:14},
+{id:"barber",nm:"Rockabilly Barbers",cat:"life",t:3,la:40.9209,lo:-73.1322,addr:"1099D Route 25A, Stony Brook",hrs:"월·일 휴무",d:"캠퍼스 앞 스트립의 이발소. walk-in 가능합니다.",car:"5분",lx:-8,ly:-26},
+{id:"citymdlg",nm:"CityMD Lake Grove",cat:"life",t:3,la:40.8615,lo:-73.1220,d:"야간이나 주말에 아플 때 가는 urgent care. 진료 후 처방전을 약국으로 보내줍니다.",car:"12분",lx:8,ly:16},
+{id:"citymdpjs",nm:"CityMD Port Jeff Station",cat:"life",t:3,la:40.9260,lo:-73.0470,d:"Port Jefferson Station 쪽 urgent care. DMV와 같은 동네입니다.",car:"11분",lx:8,ly:-6},
 ];
 
 // ---- rail lines (schematic through real station coords) ----
