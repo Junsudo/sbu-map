@@ -1,0 +1,13 @@
+{
+  "name": "SBU 정착 지도",
+  "short_name": "SBU 지도",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3f2ec",
+  "theme_color": "#16324f",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png"}
+  ]
+}
