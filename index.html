@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="SBU 지도">
 <meta name="theme-color" content="#16324f">
 <link rel="manifest" href="./manifest.webmanifest">
@@ -63,8 +63,8 @@ html,body{height:100%;overflow:hidden}
 body{margin:0;background:var(--bg);color:var(--ink);
   font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Segoe UI","Malgun Gothic","Noto Sans KR",sans-serif;
   line-height:1.62;font-size:15.5px;-webkit-text-size-adjust:100%}
-.bar{height:54px;display:flex;align-items:center;justify-content:space-between;gap:12px;
-  padding:0 14px;border-bottom:1px solid var(--line);background:var(--panel)}
+.bar{height:calc(54px + env(safe-area-inset-top,0px));display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:env(safe-area-inset-top,0px) 14px 0;border-bottom:1px solid var(--line);background:var(--panel)}
 .bar h1{margin:0;font-size:17px;letter-spacing:-.02em;font-weight:800;white-space:nowrap}
 .bar h1 .red{color:var(--accent)}
 .tabs{display:flex;background:var(--chipbg);border-radius:11px;padding:3px;gap:2px}
@@ -72,7 +72,7 @@ body{margin:0;background:var(--bg);color:var(--ink);
   font-weight:650;padding:6px 18px;border-radius:8px;cursor:pointer}
 .tabs button.on{background:var(--panel);color:var(--ink);box-shadow:0 1px 4px rgba(20,30,40,.18)}
 .tabs button:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--rail);outline-offset:2px}
-.pane{height:calc(100dvh - 54px);display:none}
+.pane{height:calc(100dvh - 54px - env(safe-area-inset-top,0px));display:none}
 .pane.on{display:block}
 /* ---------- map pane ---------- */
 #mapbox{position:relative;width:100%;height:100%;background:var(--water0);overflow:hidden}
@@ -86,12 +86,12 @@ svg#map.drag{cursor:grabbing}
 .seg button{flex:0 0 auto;border:0;background:none;color:var(--muted);font-family:inherit;font-size:12.5px;
   font-weight:600;padding:6px 12px;border-radius:8px;cursor:pointer;white-space:nowrap}
 .seg button.on{background:var(--ink);color:var(--bg)}
-.zoomctl{right:12px;bottom:64px;display:flex;flex-direction:column;gap:7px}
+.zoomctl{right:12px;bottom:calc(64px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:7px}
 .zoomctl button{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);
   background:color-mix(in srgb,var(--panel) 94%,transparent);color:var(--ink);font-size:17px;cursor:pointer;
   box-shadow:0 3px 10px rgba(20,30,40,.16);display:flex;align-items:center;justify-content:center}
 .zoomctl button:hover{border-color:var(--muted)}
-.chips{left:0;right:0;bottom:0;display:flex;gap:7px;overflow-x:auto;padding:10px 12px;
+.chips{left:0;right:0;bottom:0;display:flex;gap:7px;overflow-x:auto;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));
   scrollbar-width:none;background:linear-gradient(transparent,color-mix(in srgb,var(--water1) 55%,transparent))}
 .chips::-webkit-scrollbar{display:none}
 .chip{flex:0 0 auto;display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;
@@ -101,7 +101,7 @@ svg#map.drag{cursor:grabbing}
 .chip.act{background:color-mix(in srgb,var(--cc) 16%,var(--panel));border-color:color-mix(in srgb,var(--cc) 45%,var(--line))}
 .chip.off{opacity:.42}
 .chip.off .dot{background:var(--muted)}
-.scalebar{left:12px;bottom:64px;font-size:11px;color:var(--ink);
+.scalebar{left:12px;bottom:calc(64px + env(safe-area-inset-bottom,0px));font-size:11px;color:var(--ink);
   background:color-mix(in srgb,var(--panel) 82%,transparent);padding:3px 9px;border-radius:7px;border:1px solid var(--line)}
 .scalebar b{display:inline-block;height:3px;background:var(--ink);vertical-align:middle;margin-right:7px;border-radius:2px}
 .panel{position:absolute;right:12px;top:12px;width:330px;max-height:calc(100% - 88px);overflow:auto;
@@ -127,12 +127,12 @@ svg#map.drag{cursor:grabbing}
 .panel .foot{font-size:11.5px;color:var(--muted);margin-top:10px}
 @media (max-width:760px){
   .bar h1{font-size:15px}
-  .panel{left:10px;right:10px;top:auto;bottom:56px;width:auto;max-height:46dvh;border-radius:15px}
+  .panel{left:10px;right:10px;top:auto;bottom:calc(56px + env(safe-area-inset-bottom,0px));width:auto;max-height:46dvh;border-radius:15px}
   .scalebar{bottom:auto;top:64px}
-  .zoomctl{bottom:120px}
+  .zoomctl{bottom:calc(120px + env(safe-area-inset-bottom,0px))}
 }
 /* ---------- guide pane ---------- */
-#guide{overflow-y:auto;-webkit-overflow-scrolling:touch}
+#guide{overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:env(safe-area-inset-bottom,0px)}
 .toc{display:flex;gap:8px;overflow-x:auto;padding:12px 20px;max-width:820px;margin:0 auto;scrollbar-width:none}
 .toc::-webkit-scrollbar{display:none}
 .toc a{flex:0 0 auto;font-size:12.5px;font-weight:600;padding:5px 12px;border-radius:999px;
@@ -343,7 +343,7 @@ const GRP={"Suffolk":"suf","Nassau":"nas","Queens":"nyc","Brooklyn":"nyc","Manha
 
 // ---- POIs ----  t:1 필수 2 유용 3 옵션   좌표는 대략값
 const POIS=[
-{id:"sbu",nm:"SBU Campus",cat:"base",t:1,la:40.9126,lo:-73.1234,d:"생활의 원점. 정문 앞 도로가 25A이고 캠퍼스 동쪽 경계 도로가 Nicolls Rd입니다.",car:"기준점",tr:"캠퍼스 셔틀",lx:8,ly:14},
+{id:"sbu",nm:"SBU Campus",cat:"base",t:1,lmax:7,la:40.9126,lo:-73.1234,d:"생활의 원점. 정문 앞 도로가 25A이고 캠퍼스 동쪽 경계 도로가 Nicolls Rd입니다.",car:"기준점",tr:"캠퍼스 셔틀",lx:8,ly:14},
 {id:"sbsta",nm:"Stony Brook LIRR",cat:"rail",t:1,la:40.9192,lo:-73.1275,d:"캠퍼스 북쪽의 통학역. Port Jefferson Branch 소속 diesel 구간이라 시내 방향은 대부분 Huntington역 환승입니다.",tr:"Penn/GCM 1:45-2:00",lx:-8,ly:-14},
 {id:"hosp",nm:"SBU Hospital",cat:"life",t:2,la:40.9086,lo:-73.1155,d:"캠퍼스 동쪽의 대학병원. 응급실 기준점으로 위치만 알아두면 됩니다.",car:"캠퍼스 내",lx:10,ly:12},
 {id:"pj",nm:"Port Jefferson",cat:"base",t:1,la:40.9463,lo:-73.0685,d:"가장 가까운 나들이 항구마을. 식당과 카페가 모여 있고 Bridgeport행 페리가 뜹니다. 캠퍼스에서 Suffolk Transit 51번 버스나 LIRR 한 정거장으로 갑니다.",car:"10분",tr:"51번 버스 · LIRR 1정거장",lx:6,ly:-8},
@@ -355,7 +355,7 @@ const POIS=[
 {id:"hunt",nm:"Huntington",cat:"rail",t:1,la:40.8528,lo:-73.4093,d:"통학의 관문. diesel 열차에서 내려 건너편 전동차로 갈아타는 곳입니다. 이 역 이름은 제일 먼저 외워집니다.",tr:"SBU에서 40-45분",lx:-6,ly:-10},
 {id:"hicks",nm:"Hicksville",cat:"rail",t:2,la:40.7676,lo:-73.5290,d:"보조 환승역. 일부 열차는 Huntington 대신 여기서 갈아탑니다.",lx:6,ly:16},
 {id:"ronk",nm:"Ronkonkoma",cat:"rail",t:2,la:40.8090,lo:-73.1310,d:"남쪽의 Main Line 역. 차로 15분이고 배차가 Port Jefferson Branch보다 촘촘해서, 차가 있다면 park &amp; ride 대안이 됩니다. ISP 공항 옆이기도 합니다.",car:"15분",lx:8,ly:16},
-{id:"flush",nm:"Flushing 한인타운",cat:"kr",t:1,la:40.7585,lo:-73.8300,d:"뉴욕 최대급 한인·중식 상권. 식당, 병원, 은행, 미용실까지 다 됩니다. LIRR Port Washington Branch의 Flushing Main St역이나 지하철 7선으로 접근.",car:"70-80분",tr:"LIRR 약 1:30",lx:8,ly:-16},
+{id:"flush",nm:"Flushing Koreatown",cat:"kr",t:1,la:40.7585,lo:-73.8300,d:"뉴욕 최대급 한인·중식 상권. 식당, 병원, 은행, 미용실까지 다 됩니다. LIRR Port Washington Branch의 Flushing Main St역이나 지하철 7선으로 접근.",car:"70-80분",tr:"LIRR 약 1:30",lx:8,ly:-16},
 {id:"ktown",nm:"K-town (32nd St)",cat:"kr",t:2,la:40.7476,lo:-73.9868,d:"Manhattan 한인타운. Penn Station에서 걸어서 5분이라 시내 나간 김에 들르기 좋습니다.",lx:-14,ly:20},
 {id:"isp",nm:"ISP MacArthur",cat:"air",t:1,la:40.7952,lo:-73.1002,d:"차 20분 거리의 동네 공항. Southwest, Breeze, Frontier 등 저가 국내선. 국내 여행은 여기부터 검색하세요.",car:"20분",lx:12,ly:15},
 {id:"jfk",nm:"JFK",cat:"air",t:1,la:40.6413,lo:-73.7781,d:"국제선 허브. 한국 직항(대한항공, 아시아나 등). 대중교통은 LIRR로 Jamaica역까지 간 뒤 AirTrain 환승, 총 2시간쯤.",car:"60-75분",tr:"LIRR+AirTrain 약 2:00",lx:6,ly:16},
@@ -363,7 +363,7 @@ const POIS=[
 {id:"ewr",nm:"EWR Newark",cat:"air",t:3,la:40.6895,lo:-74.1745,d:"NJ 쪽 허브. SBU 기준 사실상 반대편이라 마지막 선택지입니다.",car:"2시간±",lx:6,ly:14},
 {id:"hmartc",nm:"H Mart Commack",cat:"kr",t:1,la:40.8420,lo:-73.2930,addr:"195 Commack Rd, Commack",d:"가장 가까운 한인마트. 차 20-25분이라 장보기 원정의 기본값이고, 매장 안 푸드코트가 있어 한식 끼니도 같이 해결됩니다.",car:"20-25분",lx:-8,ly:16},
 {id:"hmartj",nm:"H Mart Jericho",cat:"kr",t:2,la:40.7930,lo:-73.5390,addr:"336 N Broadway, Jericho",d:"서쪽으로 나갈 일이 있을 때 겸사겸사 들르는 지점입니다. IKEA와 같은 방향입니다.",car:"40분",lx:6,ly:16},
-{id:"ftlee",nm:"Fort Lee · Pal Park",cat:"kr",t:3,la:40.8495,lo:-73.9850,d:"NJ의 대형 한인타운. 규모는 크지만 SBU에서 2시간대라 참고용입니다.",car:"2시간±",lx:-10,ly:-8},
+{id:"ftlee",nm:"Fort Lee · Palisades Park",cat:"kr",t:3,la:40.8495,lo:-73.9850,d:"NJ의 대형 한인타운. 규모는 크지만 SBU에서 2시간대라 참고용입니다.",car:"2시간±",lx:-10,ly:-8},
 {id:"mall",nm:"Smith Haven Mall",cat:"shop",t:1,la:40.8683,lo:-73.1310,d:"근처 유일한 대형 몰(Macy's 등). 캠퍼스에서 51번 버스가 직행하고, 주말엔 SBU ID 무료 프로그램 대상 구간입니다.",car:"10-15분",tr:"51번 버스 약 30분",lx:-6,ly:-10},
 {id:"wegmans",nm:"Wegmans Lake Grove",cat:"shop",t:2,la:40.8625,lo:-73.1160,addr:"3270 Middle Country Rd, Lake Grove",d:"품질 좋기로 유명한 대형 슈퍼가 근처에 생겨서 장보기 선택지가 넓습니다.",car:"12분",lx:10,ly:-2},
 {id:"tj",nm:"Trader Joe's",cat:"shop",t:2,la:40.8608,lo:-73.1285,d:"Lake Grove점. 몰 바로 남쪽이라 몰 가는 날 같이 들르면 됩니다.",car:"12분",lx:-4,ly:18},
@@ -379,31 +379,31 @@ const POIS=[
 {id:"jones",nm:"Jones Beach",cat:"fun",t:2,la:40.5965,lo:-73.5120,d:"뉴욕의 대표 해수욕장. 여름 성수기엔 주차가 일찍 찹니다. 대중교통은 여름 한정으로 Freeport LIRR역에서 NICE n88 버스가 있지만 SBU 기준으론 사실상 차입니다.",car:"50분",lx:6,ly:14},
 {id:"huntv",nm:"Huntington Village",cat:"fun",t:2,la:40.8710,lo:-73.4260,d:"맛집과 라이브 공연장이 모인 번화가. 환승역 Huntington과 같은 타운입니다.",car:"35-40분",lx:-8,ly:-8},
 {id:"patch",nm:"Patchogue",cat:"fun",t:3,la:40.7657,lo:-73.0180,d:"남쪽 해안의 젊은 번화가. Nicolls Rd를 끝까지 내려가면 나오고, 51번 버스의 남쪽 종점이기도 합니다.",car:"25분",lx:6,ly:14},
-{id:"northfork",nm:"North Fork 와이너리",cat:"fun",t:3,la:41.0000,lo:-72.5100,d:"가을의 와이너리·호박밭 지대. Riverhead 아울렛과 묶어 하루 코스.",car:"45-55분",lx:6,ly:-6},
+{id:"northfork",nm:"North Fork Wine Country",cat:"fun",t:3,la:41.0000,lo:-72.5100,d:"가을의 와이너리·호박밭 지대. Riverhead 아울렛과 묶어 하루 코스.",car:"45-55분",lx:6,ly:-6},
 {id:"greenport",nm:"Greenport",cat:"fun",t:3,la:41.1035,lo:-72.3620,d:"North Fork 끝의 예쁜 항구 마을. LIRR 지선의 종점이기도 합니다.",car:"1시간 10분",lx:6,ly:-6},
 {id:"hampton",nm:"Southampton",cat:"fun",t:3,la:40.8840,lo:-72.3895,d:"Hamptons 입구. 여름 부촌 휴양지 분위기 구경은 이쪽부터.",car:"1시간",lx:6,ly:14},
 {id:"montauk",nm:"Montauk",cat:"fun",t:3,la:41.0360,lo:-71.9540,d:"섬의 동쪽 끝, 등대와 서핑의 동네. 왕복 4시간짜리 그랜드 투어입니다.",car:"1시간 45분",lx:-8,ly:-8},
 {id:"bpt",nm:"Bridgeport (CT)",cat:"air",t:3,la:41.1700,lo:-73.1820,d:"페리 도착지. 역이 부두 근처라 Metro-North New Haven Line으로 갈아타 NYC나 New Haven 방면으로 이어집니다.",lx:8,ly:-6},
 {id:"kft",nm:"Kung Fu Tea",cat:"eat",t:2,la:40.9218,lo:-73.1292,addr:"1009 Route 25A, Stony Brook",d:"캠퍼스 정문 건너 버블티. 과제하다 당 떨어질 때의 기본값입니다.",car:"5분",lx:8,ly:-6},
-{id:"gtea",nm:"Green Tea Restaurant",cat:"eat",t:3,la:40.9215,lo:-73.1303,addr:"1015 Route 25A, Stony Brook",d:"캠퍼스 앞 중식·해산물 식당. 25A 스트립에 같이 있습니다.",car:"5분",lx:10,ly:8},
+{id:"gtea",nm:"Green Tea Restaurant",cat:"eat",t:3,lz:7,la:40.9215,lo:-73.1303,addr:"1015 Route 25A, Stony Brook",d:"캠퍼스 앞 중식·해산물 식당. 25A 스트립에 같이 있습니다.",car:"5분",lx:10,ly:8},
 {id:"gcactus",nm:"Green Cactus Grill",cat:"eat",t:2,la:40.9212,lo:-73.1316,addr:"1099 N Country Rd(25A), Stony Brook",d:"부리토와 타코 그릴. 캠퍼스 앞 스트립의 든든한 한 끼입니다.",car:"5분",lx:-8,ly:22},
 {id:"crazybeans",nm:"Crazy Beans",cat:"eat",t:2,la:40.9170,lo:-73.1458,addr:"Stony Brook Village Center",d:"브런치와 커피. 주말 아침 동네 마실 코스입니다.",car:"6분",lx:-8,ly:-10},
-{id:"sweetmamas",nm:"Sweet Mama's",cat:"eat",t:3,la:40.9159,lo:-73.1468,addr:"Stony Brook Village Center",d:"올데이 브런치 다이너. 버거와 샌드위치가 무난합니다.",car:"6분",lx:-8,ly:16},
-{id:"luca",nm:"Luca",cat:"eat",t:3,la:40.9150,lo:-73.1448,addr:"Stony Brook Village Center",d:"동네에서 제일 차려입고 가는 이탈리안. 부모님 오시면 여기입니다.",car:"6분",lx:8,ly:20},
+{id:"sweetmamas",nm:"Sweet Mama's",cat:"eat",t:3,lz:7,la:40.9159,lo:-73.1468,addr:"Stony Brook Village Center",d:"올데이 브런치 다이너. 버거와 샌드위치가 무난합니다.",car:"6분",lx:-8,ly:16},
+{id:"luca",nm:"Luca",cat:"eat",t:3,lz:7,la:40.9150,lo:-73.1448,addr:"Stony Brook Village Center",d:"동네에서 제일 차려입고 가는 이탈리안. 부모님 오시면 여기입니다.",car:"6분",lx:8,ly:20},
 {id:"slurp",nm:"Slurp Ramen",cat:"eat",t:2,la:40.9458,lo:-73.0712,addr:"109 W Broadway, Port Jefferson",hrs:"월 휴무",d:"Port Jefferson의 라멘집. 항구 산책과 묶기 좋습니다.",car:"10분",lx:-12,ly:26},
 {id:"toast",nm:"Toast Coffeehouse",cat:"eat",t:2,la:40.9450,lo:-73.0655,addr:"Port Jefferson",d:"브런치 명소. 주말엔 웨이팅이 있는 편입니다.",car:"10분",lx:14,ly:16},
-{id:"ff347",nm:"347 패스트푸드 지대",cat:"eat",t:2,la:40.9010,lo:-73.0930,d:"Smith Haven Mall에서 Target 사이 347 변에 McDonald's, Wendy's, Taco Bell, Dunkin 같은 체인이 이어집니다. 급한 끼니는 이 구간에서 해결됩니다.",car:"8-12분",lx:10,ly:18},
+{id:"ff347",nm:"Fast Food Strip (Route 347)",cat:"eat",t:2,la:40.9010,lo:-73.0930,d:"Smith Haven Mall에서 Target 사이 347 변에 McDonald's, Wendy's, Taco Bell, Dunkin 같은 체인이 이어집니다. 급한 끼니는 이 구간에서 해결됩니다.",car:"8-12분",lx:10,ly:18},
 {id:"amc",nm:"AMC Stony Brook 17",cat:"fun",t:2,la:40.8995,lo:-73.0985,addr:"2196 Nesconset Hwy, Stony Brook",d:"근처 유일한 대형 영화관. 347 변이라 장보기와 묶기 좋습니다.",car:"8분",lx:-10,ly:-4},
 {id:"ikea",nm:"IKEA Hicksville",cat:"shop",t:2,la:40.7745,lo:-73.5245,addr:"Broadway Commons, 358 N Broadway, Hicksville",d:"가구와 살림 장만의 성지. 입주 직후 한 번은 가게 됩니다. Hicksville역에서 가깝습니다.",car:"45-50분",lx:8,ly:-6},
 {id:"freeport",nm:"Freeport LIRR",cat:"rail",t:3,la:40.6571,lo:-73.5822,d:"Babylon Branch의 역. 여름철 Jones Beach행 NICE n88 버스가 여기서 출발합니다.",lx:6,ly:14},
 {id:"babylon",nm:"Babylon LIRR",cat:"rail",t:3,la:40.7000,lo:-73.3230,d:"Babylon Branch 종점이자 Montauk 방면 환승역. Hamptons 갈 때 거치게 됩니다.",lx:6,ly:14},
 {id:"chase",nm:"Chase Bank",cat:"life",t:2,la:40.9330,lo:-73.1140,addr:"1395 Route 25A, Setauket",hrs:"평일 9-5, 토 9-2",d:"캠퍼스에서 가장 가까운 대형 은행 지점. 계좌 개설 같은 창구 업무는 여기서 봅니다.",car:"5분",lx:8,ly:14},
-{id:"boa",nm:"Bank of America",cat:"life",t:3,la:40.9390,lo:-73.1110,addr:"15 Bennetts Rd, East Setauket",d:"BoA 지점과 walk-up ATM. Chase와 취향대로 고르면 됩니다.",car:"6분",lx:8,ly:16},
+{id:"boa",nm:"Bank of America",cat:"life",t:3,lz:7,la:40.9390,lo:-73.1110,addr:"15 Bennetts Rd, East Setauket",d:"BoA 지점과 walk-up ATM. Chase와 취향대로 고르면 됩니다.",car:"6분",lx:8,ly:16},
 {id:"cvs",nm:"CVS (Setauket)",cat:"life",t:2,la:40.9428,lo:-73.0990,addr:"682 Route 25A, Setauket",hrs:"매일 8-22",d:"기본 약국이자 편의점. 처방약 픽업과 자잘한 생필품은 여기서 해결됩니다.",car:"6분",lx:-6,ly:-18},
-{id:"walgreens",nm:"Walgreens",cat:"life",t:3,la:40.9445,lo:-73.0880,addr:"226 Route 25A, East Setauket",d:"CVS의 대안 약국. 같은 25A 선상에 있습니다.",car:"7분",lx:12,ly:-6},
-{id:"cvs24",nm:"CVS 24시간",cat:"life",t:3,la:40.9250,lo:-73.0520,addr:"4331 Nesconset Hwy, Port Jefferson Station",hrs:"24시간",d:"밤중에 약이 필요할 때 가는 24시간 지점입니다.",car:"10분",lx:8,ly:14},
+{id:"walgreens",nm:"Walgreens",cat:"life",t:3,lz:7,la:40.9445,lo:-73.0880,addr:"226 Route 25A, East Setauket",d:"CVS의 대안 약국. 같은 25A 선상에 있습니다.",car:"7분",lx:12,ly:-6},
+{id:"cvs24",nm:"CVS (24hr)",cat:"life",t:3,la:40.9250,lo:-73.0520,addr:"4331 Nesconset Hwy, Port Jefferson Station",hrs:"24시간",d:"밤중에 약이 필요할 때 가는 24시간 지점입니다.",car:"10분",lx:8,ly:14},
 {id:"usps",nm:"USPS East Setauket",cat:"life",t:2,la:40.9440,lo:-73.0930,addr:"450 Route 25A, East Setauket",hrs:"평일 9-5, 토 9-15:30",d:"가까운 우체국. 한국으로 소포 보낼 때 여기입니다.",car:"6분",lx:12,ly:4},
-{id:"laundromat",nm:"Stony Brook Laundromat",cat:"life",t:3,la:40.9020,lo:-73.0915,addr:"2460 Nesconset Hwy, Stony Brook",hrs:"매일 8:30-20",d:"코인 세탁 및 wash &amp; fold 맡기기 가능. 기숙사 세탁실이 붐빌 때의 대안입니다.",car:"8분",lx:-10,ly:14},
+{id:"laundromat",nm:"Stony Brook Laundromat",cat:"life",t:3,lz:7,la:40.9020,lo:-73.0915,addr:"2460 Nesconset Hwy, Stony Brook",hrs:"매일 8:30-20",d:"코인 세탁 및 wash &amp; fold 맡기기 가능. 기숙사 세탁실이 붐빌 때의 대안입니다.",car:"8분",lx:-10,ly:14},
 {id:"barber",nm:"Rockabilly Barbers",cat:"life",t:3,la:40.9209,lo:-73.1322,addr:"1099D Route 25A, Stony Brook",hrs:"월·일 휴무",d:"캠퍼스 앞 스트립의 이발소. walk-in 가능합니다.",car:"5분",lx:-8,ly:-26},
 {id:"citymdlg",nm:"CityMD Lake Grove",cat:"life",t:3,la:40.8615,lo:-73.1220,d:"야간이나 주말에 아플 때 가는 urgent care. 진료 후 처방전을 약국으로 보내줍니다.",car:"12분",lx:8,ly:16},
 {id:"citymdpjs",nm:"CityMD Port Jeff Station",cat:"life",t:3,la:40.9260,lo:-73.0470,d:"Port Jefferson Station 쪽 urgent care. DMV와 같은 동네입니다.",car:"11분",lx:8,ly:-6},
@@ -414,15 +414,15 @@ const RAIL=[
  {c:"var(--rail)",w:2.8,pts:[[40.7506,-73.9935],[40.7456,-73.9029],[40.6995,-73.8087],[40.7240,-73.7060],[40.7320,-73.6810],[40.7410,-73.6400],[40.7480,-73.6100],[40.7546,-73.5870],[40.7676,-73.5290],[40.8250,-73.4990],[40.8510,-73.4530],[40.8528,-73.4093],[40.8690,-73.3650],[40.8800,-73.3260],[40.8863,-73.2500],[40.8556,-73.1996],[40.8790,-73.1560],[40.9192,-73.1275],[40.9347,-73.0532]],lab:{la:40.902,lo:-73.205,t:"LIRR Port Jefferson Branch"}},
  {c:"var(--rail)",w:2.2,pts:[[40.7527,-73.9772],[40.7456,-73.9029]]},
  {c:"var(--ronk)",w:2.0,pts:[[40.7676,-73.5290],[40.7430,-73.4840],[40.7357,-73.4410],[40.7550,-73.3760],[40.7690,-73.3260],[40.7810,-73.2460],[40.7920,-73.1960],[40.8090,-73.1310]],lab:{la:40.773,lo:-73.33,t:"Ronkonkoma Br."}},
- {c:"var(--ronk)",w:1.3,dash:"5 4",pts:[[40.8090,-73.1310],[40.8180,-72.9840],[40.8360,-72.9160],[40.9200,-72.6620],[40.9910,-72.5340],[41.0650,-72.4260],[41.1030,-72.3620]],lab:{la:41.045,lo:-72.44,t:"Greenport행(소수 운행)"}},
+ {c:"var(--ronk)",w:1.3,dash:"5 4",pts:[[40.8090,-73.1310],[40.8180,-72.9840],[40.8360,-72.9160],[40.9200,-72.6620],[40.9910,-72.5340],[41.0650,-72.4260],[41.1030,-72.3620]],lab:{la:41.045,lo:-72.44,t:"Greenport Branch (하루 몇 편)"}},
  {c:"var(--pw)",w:1.8,pts:[[40.7456,-73.9029],[40.7585,-73.8300],[40.7630,-73.7710],[40.7870,-73.7260],[40.8270,-73.6910]],lab:{la:40.806,lo:-73.705,t:"Port Washington Br."}},
  {c:"var(--rail2)",w:1.4,pts:[[40.6995,-73.8087],[40.6660,-73.7040],[40.6580,-73.6410],[40.6570,-73.5820],[40.6810,-73.4740],[40.7000,-73.3230]],lab:{la:40.664,lo:-73.60,t:"Babylon Br."}},
  {c:"var(--rail2)",w:1.2,dash:"5 4",pts:[[40.7000,-73.3230],[40.7190,-73.2450],[40.7440,-73.0870],[40.7620,-73.0170],[40.7990,-72.8660],[40.8230,-72.6410],[40.8690,-72.5250],[40.8940,-72.3900],[40.9380,-72.3080],[40.9650,-72.1920],[41.0460,-71.9560]],lab:{la:40.83,lo:-72.53,t:"Montauk Br."}},
  {c:"var(--mnr)",w:1.7,pts:[[40.7527,-73.9772],[40.8050,-73.9200],[40.9115,-73.7840],[40.9850,-73.6830],[41.0260,-73.6280],[41.0465,-73.5406],[41.0960,-73.4210],[41.1787,-73.1894],[41.2970,-72.9260]],lab:{la:41.150,lo:-73.340,t:"Metro-North New Haven Line"}},
- {c:"var(--s7)",w:1.3,pts:[[40.7527,-73.9772],[40.7447,-73.9485],[40.7477,-73.8910],[40.7585,-73.8300]],lab:{la:40.7405,lo:-73.9280,t:"지하철 7"}},
- {c:"var(--se)",w:1.3,dash:"6 3",pts:[[40.7506,-73.9935],[40.7490,-73.9370],[40.7477,-73.8910],[40.7020,-73.8090]],lab:{la:40.7195,lo:-73.8500,t:"지하철 E"}},
+ {c:"var(--s7)",w:1.3,pts:[[40.7527,-73.9772],[40.7447,-73.9485],[40.7477,-73.8910],[40.7585,-73.8300]],lab:{la:40.7405,lo:-73.9280,t:"Subway 7"}},
+ {c:"var(--se)",w:1.3,dash:"6 3",pts:[[40.7506,-73.9935],[40.7490,-73.9370],[40.7477,-73.8910],[40.7020,-73.8090]],lab:{la:40.7195,lo:-73.8500,t:"Subway E"}},
  {c:"var(--atr)",w:1.4,dash:"3 3",pts:[[40.6995,-73.8087],[40.6650,-73.7960],[40.6413,-73.7781]],lab:{la:40.6690,lo:-73.8130,t:"AirTrain"}},
- {c:"var(--bus)",w:1.3,dash:"2 3",pts:[[40.9347,-73.0532],[40.9210,-73.0500],[40.9200,-73.0600],[40.9050,-73.0880],[40.8850,-73.1050],[40.8683,-73.1310],[40.8950,-73.1245],[40.9126,-73.1234],[40.8515,-73.1255],[40.8090,-73.1310],[40.7850,-73.0750],[40.7657,-73.0180]],lab:{la:40.7950,lo:-73.0650,t:"Suffolk 51번 버스"}},
+ {c:"var(--bus)",w:1.3,dash:"2 3",pts:[[40.9347,-73.0532],[40.9210,-73.0500],[40.9200,-73.0600],[40.9050,-73.0880],[40.8850,-73.1050],[40.8683,-73.1310],[40.8950,-73.1245],[40.9126,-73.1234],[40.8515,-73.1255],[40.8090,-73.1310],[40.7850,-73.0750],[40.7657,-73.0180]],lab:{la:40.7950,lo:-73.0650,t:"Suffolk Transit 51"}},
 ];
 const ROADS=[
  {w:2.2,pts:[[40.7437,-73.9600],[40.7370,-73.8650],[40.7480,-73.7530],[40.7700,-73.6400],[40.7870,-73.5330],[40.7930,-73.4150],[40.8130,-73.3000],[40.8220,-73.2110],[40.8515,-73.1250],[40.8560,-73.0300],[40.8650,-72.8700],[40.9000,-72.7500],[40.9250,-72.6920]],lab:{la:40.795,lo:-73.44,t:"I-495 LIE"}},
@@ -435,7 +435,7 @@ const ROADS=[
  {w:1.4,pts:[[40.9850,-73.6540],[41.0465,-73.5450],[41.0960,-73.4230],[41.1750,-73.1950],[41.2950,-72.9240]],lab:{la:41.222,lo:-73.020,t:"I-95"}},
 ];
 const FERRY=[
- {pts:[[40.9500,-73.0695],[41.0600,-73.1300],[41.1700,-73.1820]],lab:{la:41.062,lo:-73.150,t:"PJ–Bridgeport 페리 1:15"}},
+ {pts:[[40.9500,-73.0695],[41.0600,-73.1300],[41.1700,-73.1820]],lab:{la:41.062,lo:-73.150,t:"Port Jeff–Bridgeport Ferry 1:15"}},
  {pts:[[41.1620,-72.2400],[41.2500,-72.1500],[41.3300,-72.0800]],lab:{la:41.255,lo:-72.175,t:"Orient Pt → New London"}},
 ];
 const STNS=[
@@ -513,6 +513,42 @@ for(const c of LAND){
 const REGION=[[40.62,-73.93,"NYC"],[40.70,-73.58,"Nassau"],[40.79,-72.86,"Suffolk"],[41.24,-73.05,"Connecticut"],[40.72,-74.22,"New Jersey"],[41.035,-73.175,"Long Island Sound"],[40.53,-72.65,"Atlantic Ocean"]];
 const gRegion=el('g',{},view);
 for(const [la,lo,t] of REGION){el('text',{x:px(lo),y:py(la),'text-anchor':'middle',fill:'var(--muted)',opacity:.8,'font-size':13,'letter-spacing':'.14em','font-weight':600,class:'rg'},gRegion).textContent=t;}
+const PLACES=[
+["Astoria",40.7644,-73.9235,4],["Long Island City",40.7440,-73.9490,4.5],["Harlem",40.8116,-73.9465,4],
+["Midtown",40.7590,-73.9845,4.5],["Lower Manhattan",40.7100,-74.0080,4],["Williamsburg",40.7143,-73.9560,4.5],
+["Jackson Heights",40.7557,-73.8831,4.5],["Forest Hills",40.7185,-73.8458,4.5],["Coney Island",40.5755,-73.9707,3.5],
+["Great Neck",40.8007,-73.7285,3.5],["Garden City",40.7268,-73.6343,3.5],["Hempstead",40.7062,-73.6187,3],
+["Levittown",40.7259,-73.5143,3.5],["Long Beach",40.5884,-73.6579,3],["Oyster Bay",40.8657,-73.5320,3.5],
+["Manhasset",40.7980,-73.6990,4.5],
+["Melville",40.7934,-73.4151,4],["Northport",40.9009,-73.3432,3.5],["Hauppauge",40.8257,-73.2027,3.5],
+["Islip",40.7301,-73.2104,3.5],["Centereach",40.8676,-73.0965,3.5],["Selden",40.8665,-73.0357,3.5],
+["Lake Grove",40.8532,-73.1152,4],["Farmingville",40.8310,-73.0290,4],["Holbrook",40.7793,-73.0754,3.5],
+["Coram",40.8687,-73.0065,3.5],["Mount Sinai",40.9470,-73.0290,3.5],["Miller Place",40.9600,-72.9960,3.5],
+["Rocky Point",40.9530,-72.9250,3.5],["Wading River",40.9510,-72.8420,4],["Shirley·Mastic",40.8020,-72.8670,3.5],
+["Center Moriches",40.8000,-72.7900,4],["Calverton",40.9150,-72.7450,4],["Lindenhurst",40.6868,-73.3743,4],
+["Fire Island",40.6520,-73.1050,3.5],
+["Setauket",40.9420,-73.1120,5],["South Setauket",40.8940,-73.0850,5.5],
+["Riverhead",40.9200,-72.6660,2.6],["Shelter Island",41.0700,-72.3390,3.5],["Sag Harbor",40.9990,-72.2930,3.5],
+["Cutchogue",41.0090,-72.4860,4],["Orient",41.1440,-72.2980,4],["Amagansett",40.9740,-72.1440,4],
+["Westhampton Beach",40.8060,-72.6450,4],
+["Yonkers",40.9312,-73.8988,3],["White Plains",41.0340,-73.7629,3.5],["Greenwich",41.0262,-73.6282,3],
+["Norwalk",41.1177,-73.4082,3.5],["Fairfield",41.1408,-73.2613,3.5],["Milford",41.2223,-73.0565,3.5],
+["Newark",40.7357,-74.1724,3],["Jersey City",40.7178,-74.0431,3],["Hoboken",40.7440,-74.0324,4],
+["Hackensack",40.8859,-74.0435,3.5],["Paramus",40.9445,-74.0700,3.5],
+["Melville Library",40.9156,-73.1230,14],["SAC",40.9143,-73.1227,14],["Staller Center",40.9158,-73.1200,18],
+["Island Federal Arena",40.9168,-73.1262,18],["LaValle Stadium",40.9192,-73.1195,14],["Rec Center",40.9161,-73.1240,22],
+["Main Entrance (25A)",40.9204,-73.1222,18],["Chapin Apts",40.9199,-73.1322,22],
+["Mendelsohn Quad",40.9184,-73.1245,18],["H Quad",40.9175,-73.1285,18],["Kelly Quad",40.9142,-73.1300,14],
+["Roosevelt Quad",40.9128,-73.1292,18],["Tabler Quad",40.9095,-73.1280,14],["Roth Quad",40.9102,-73.1240,18],
+["West Apts",40.9078,-73.1298,18],
+];
+const gPlace=el('g',{},view);
+for(const [nm,la,lo,z] of PLACES){
+  const t=el('text',{x:px(lo),y:py(la),'text-anchor':'middle',fill:'var(--muted)',opacity:.9,
+    'font-size':10.5,'font-style':'italic','letter-spacing':'.06em',class:'plc','data-z':z,
+    stroke:'var(--halo)','stroke-width':2.5,'paint-order':'stroke'},gPlace);
+  t.textContent=nm;
+}
 
 function pathFrom(pts){let d="M";pts.forEach((p,i)=>{d+=px(p[1]).toFixed(1)+" "+py(p[0]).toFixed(1)+(i<pts.length-1?"L":"");});return d;}
 const gRoad=el('g',{},view), gRail=el('g',{},view), gFerry=el('g',{},view);
@@ -563,9 +599,10 @@ for(const p of POIS){
 // ---- view state / zoom ----
 let vx=0,vy=0,vk=1;
 function clampView(){
-  vk=Math.min(18,Math.max(1,vk));
-  const minX=W-W*vk-40*vk, minY=H-H*vk-40*vk;
-  vx=Math.min(40,Math.max(minX,vx)); vy=Math.min(40,Math.max(minY,vy));
+  vk=Math.min(64,Math.max(1,vk));
+  const mx=W*0.45, my=H*0.45;
+  const minX=W-W*vk-mx, minY=H-H*vk-my;
+  vx=Math.min(mx,Math.max(minX,vx)); vy=Math.min(my,Math.max(minY,vy));
 }
 let rafPending=false;
 function applyView(){
@@ -574,14 +611,21 @@ function applyView(){
     rafPending=false;
     view.setAttribute('transform',`translate(${vx} ${vy}) scale(${vk})`);
     const k=vk, f=Math.pow(k,.8);
+    document.querySelectorAll('#view .poi').forEach(g=>{const p=POIS.find(q=>q.id===g.dataset.id);
+      g.__zshow=(p.t===1||(p.t===2&&k>=1.5)||(p.t===3&&k>=2.4));
+      g.style.display=(g.__fshow!==false&&g.__zshow)?'':'none';});
     document.querySelectorAll('#view .pt').forEach(c=>{const b=c.parentNode.__r||(c.parentNode.__r=+c.getAttribute('r'));c.setAttribute('r',b/f);c.setAttribute('stroke-width',1.6/k);});
     document.querySelectorAll('#view .glow').forEach(c=>{const b=c.__r||(c.__r=+c.getAttribute('r'));c.setAttribute('r',b/f);});
     document.querySelectorAll('#view .pl').forEach(t=>{const p=POIS.find(q=>q.id===t.parentNode.dataset.id);const base=p.t===1?11.5:10;
       t.setAttribute('font-size',base/Math.pow(k,.75));t.setAttribute('stroke-width',3/k);
       t.setAttribute('x',px(p.lo)+(p.lx||8)/f);t.setAttribute('y',py(p.la)+(p.ly||4)/f);
-      t.style.display=(p.t===1||(p.t===2&&k>=1.7)||(p.t===3&&k>=3))?'':'none';});
+      const lmaxOk=!p.lmax||k<p.lmax;
+      t.style.display=((p.t===1||(p.t===2&&k>=2.6)||(p.t===3&&k>=(p.lz||5.5)))&&lmaxOk)?'':'none';});
     document.querySelectorAll('#view .ll').forEach(t=>{t.setAttribute('font-size',10/Math.pow(k,.8));t.setAttribute('stroke-width',3/k);t.style.display=k>=1.25?'':'none';});
     document.querySelectorAll('#view .rg').forEach(t=>{t.setAttribute('font-size',13/Math.pow(k,.5));t.style.display=k<5?'':'none';});
+    document.querySelectorAll('#view .plc').forEach(t=>{const z=+t.dataset.z;
+      t.setAttribute('font-size',10.5/Math.pow(k,.8));t.setAttribute('stroke-width',2.5/k);
+      t.style.display=k>=z?'':'none';});
     document.querySelectorAll('#view .stng').forEach((g,i)=>{const s=STNS[i];
       g.style.display=k>=2.4?'':'none';
       g.querySelector('.stnhit').setAttribute('r',9/k);
@@ -609,7 +653,7 @@ function svgPoint(clientX,clientY){
   return [ (clientX-r.left-ox)/scale, (clientY-r.top-oy)/scale ];
 }
 function zoomAt(sx,sy,fz){
-  const nk=Math.min(18,Math.max(1,vk*fz)); fz=nk/vk;
+  const nk=Math.min(64,Math.max(1,vk*fz)); fz=nk/vk;
   vx=sx-(sx-vx)*fz; vy=sy-(sy-vy)*fz; vk=nk; clampView(); applyView();
 }
 svg.addEventListener('wheel',e=>{e.preventDefault();const [sx,sy]=svgPoint(e.clientX,e.clientY);zoomAt(sx,sy,Math.pow(1.0015,-e.deltaY));},{passive:false});
@@ -693,7 +737,8 @@ document.getElementById('coreonly').onclick=function(){coreOnly=!coreOnly;this.c
 function refreshVis(){
   for(const p of POIS){
     const show=catOn[p.cat]&&(!coreOnly||p.t<=2);
-    poiEls[p.id].style.display=show?'':'none';
+    poiEls[p.id].__fshow=show;
+    poiEls[p.id].style.display=(show&&poiEls[p.id].__zshow!==false)?'':'none';
   }
 }
 
