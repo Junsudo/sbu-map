@@ -27,7 +27,7 @@ Stony Brook University 유학 생활 정착을 위한 개인 지도/네비게이
 
 ## 구조
 
-단일 HTML 파일(약 14MB) 안에 코드와 데이터 상수가 함께 들어 있습니다. 외부 요청이 없어 오프라인 캐시가 단순합니다.
+코드는 `index.html`(약 6.5MB)에 있고, 전역 건물·주거도로 데이터는 분리 파일(`d_bld1.js`, `d_bld2.js`, `d_str.js`, 합계 약 118MB)에 있습니다. 전부 같은 origin의 정적 파일이라 service worker가 캐시하면 오프라인으로 동작합니다. 건물은 맵 전체에서 1,314,808동(Geofabrik NY·NJ·CT PBF에서 osmium으로 추출, 면적 상위 셀당 75동, 생활권·캠퍼스는 전량)입니다.
 
 - 투영: equirectangular. 경도 -74.30~-71.78, 위도 40.50~41.34, `SX=W/((LON1-LON0)*cos(40.92°))`
 - 렌더: SVG 단일 `<g>` 뷰 변환. 레이어는 24×12(건물 48×24) 공간 셀로 나눠 viewport culling
