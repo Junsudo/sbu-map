@@ -1,5 +1,5 @@
-const C='sbumap-v3';
-self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(['./','./index.html','./d_bld1.js','./d_bld2.js','./d_str.js','./manifest.webmanifest','./icon-180.png','./icon-192.png','./icon-512.png'])).then(()=>self.skipWaiting()));});
+const C='sbumap-v4';
+self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(['./','./index.html','./d_bld1.js','./d_bld2.js','./d_str.js','./d_poi.js','./manifest.webmanifest','./icon-180.png','./icon-192.png','./icon-512.png'])).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==C).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
 self.addEventListener('fetch',e=>{
   const req=e.request;
